@@ -29,9 +29,9 @@ class GameScene: SKScene {
         self.maze = maze
         
         let Spike = SKSpriteNode(imageNamed: "Spike")
-        self.Spike = Spike
-        self.Spike.position = CGPoint(x: 25, y: 90)
+        Spike.position = CGPoint(x: 25, y: 90)
         addChild(Spike)
+        self.Spike = Spike
     
         self.lastUpdateTime = 0
 
