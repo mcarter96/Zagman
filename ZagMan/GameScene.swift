@@ -37,9 +37,9 @@ class GameScene: SKScene {
 
     }
     
-    func moveRight() {
-        let moveRight = SKAction.moveBy(x: 25, y: 0, duration: 0.5)
-        Spike.run(moveRight)
+    func moveLocation(xMove: CGFloat, yMove: CGFloat) {
+        let move = SKAction.moveBy(x: xMove*15, y: yMove*15, duration: 1.0)
+        Spike.run(move)
     }
     
     
