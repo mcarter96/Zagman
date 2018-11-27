@@ -15,6 +15,7 @@
 		9F5670A221ACEF9D002C3F07 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F5670A021ACEF9D002C3F07 /* Main.storyboard */; };
 		9F5670A421ACEF9E002C3F07 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F5670A321ACEF9E002C3F07 /* Assets.xcassets */; };
 		9F5670A721ACEF9E002C3F07 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F5670A521ACEF9E002C3F07 /* LaunchScreen.storyboard */; };
+		9F5670AF21ACEFCB002C3F07 /* MyTileSet.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9F5670AE21ACEFCB002C3F07 /* MyTileSet.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		9F5670A321ACEF9E002C3F07 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9F5670A621ACEF9E002C3F07 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9F5670A821ACEF9E002C3F07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9F5670AE21ACEFCB002C3F07 /* MyTileSet.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyTileSet.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 			children = (
 				9F56709621ACEF9D002C3F07 /* AppDelegate.swift */,
 				9F56709821ACEF9D002C3F07 /* GameScene.sks */,
+				9F5670AE21ACEFCB002C3F07 /* MyTileSet.sks */,
 				9F56709A21ACEF9D002C3F07 /* Actions.sks */,
 				9F56709C21ACEF9D002C3F07 /* GameScene.swift */,
 				9F56709E21ACEF9D002C3F07 /* GameViewController.swift */,
@@ -131,6 +134,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F5670AF21ACEFCB002C3F07 /* MyTileSet.sks in Resources */,
 				9F5670A221ACEF9D002C3F07 /* Main.storyboard in Resources */,
 				9F56709921ACEF9D002C3F07 /* GameScene.sks in Resources */,
 				9F5670A421ACEF9E002C3F07 /* Assets.xcassets in Resources */,

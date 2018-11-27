@@ -11,7 +11,23 @@ import SpriteKit
 import GameplayKit
 
 class GameViewController: UIViewController {
-
+    
+    var sceneNode : GameScene?
+    
+    @IBAction func MoveUp(_ sender: UIButton) {
+    }
+    
+    @IBAction func MoveLeft(_ sender: UIButton) {
+    }
+    
+    @IBAction func MoveDown(_ sender: UIButton) {
+    }
+    
+    @IBAction func MoveRight(_ sender: UIButton) {
+        sceneNode?.moveRight()
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -21,6 +37,8 @@ class GameViewController: UIViewController {
             
             // Get the SKScene from the loaded GKScene
             if let sceneNode = scene.rootNode as! GameScene? {
+                
+                self.sceneNode = sceneNode
                 
                 // Copy gameplay related content over to the scene
                 sceneNode.entities = scene.entities
