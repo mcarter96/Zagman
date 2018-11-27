@@ -12,7 +12,7 @@ import GameplayKit
 
 class GameViewController: UIViewController {
     
-    var sceneNode : GameScene?
+    var sceneNode : GameScene!
     
     @IBAction func MoveUp(_ sender: UIButton) {
     }
@@ -24,7 +24,7 @@ class GameViewController: UIViewController {
     }
     
     @IBAction func MoveRight(_ sender: UIButton) {
-        sceneNode?.moveRight()
+        sceneNode.moveRight()
     }
     
     
