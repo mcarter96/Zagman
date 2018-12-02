@@ -30,7 +30,6 @@ class GameViewController: UIViewController {
         sceneNode.moveLocation(xMove: 1, yMove: 0)
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         

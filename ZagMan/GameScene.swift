@@ -30,7 +30,7 @@ class GameScene: SKScene {
     }
     
     func moveLocation(xMove: CGFloat, yMove: CGFloat) {
-        let move = SKAction.moveBy(x: xMove*50, y: yMove*50, duration: 0.5)
+        let move = SKAction.moveBy(x: xMove*60, y: yMove*60, duration: 0.5) // Chose 60 to match tile size
         Spike.run(move)
     }
     
@@ -38,8 +38,15 @@ class GameScene: SKScene {
         // Called before each frame is rendered
         let position = Spike.position
         let column = maze.tileColumnIndex(fromPosition: position)
-        let row = maze.tileRowIndex(fromPosition: position)
+        let row = maze.tileRowIndex(fromPosition: position) - 2 // For some reason the row count needs to be adjusted by 2
         print("Column: \(column), Row: \(row)")
-        
+        let tile = maze.tileDefinition(atColumn: column, row: row)
+        if tile == nil {
+            // Open space
+            print("path")
+        } else {
+            print("wall!")
+        }
+
     }
 }
