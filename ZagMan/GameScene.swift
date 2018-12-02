@@ -11,13 +11,8 @@ import GameplayKit
 
 class GameScene: SKScene {
     
-    var maze : SKTileMapNode!
-    var Spike : SKSpriteNode!
-    
-    var entities = [GKEntity]()
-    var graphs = [String : GKGraph]()
-    
-    private var lastUpdateTime : TimeInterval = 0
+    var maze = SKTileMapNode()
+    var Spike = SKSpriteNode()
     
     override func sceneDidLoad() {
         backgroundColor = SKColor.lightGray
@@ -29,16 +24,15 @@ class GameScene: SKScene {
         self.maze = maze
         
         let Spike = SKSpriteNode(imageNamed: "Spike")
-        Spike.position = CGPoint(x: 25, y: 90)
+        Spike.size = CGSize(width: 55, height: 45)
+        Spike.position = CGPoint(x: 30, y: 110)
         addChild(Spike)
         self.Spike = Spike
-    
-        self.lastUpdateTime = 0
 
     }
     
     func moveLocation(xMove: CGFloat, yMove: CGFloat) {
-        let move = SKAction.moveBy(x: xMove*15, y: yMove*15, duration: 1.0)
+        let move = SKAction.moveBy(x: xMove*50, y: yMove*50, duration: 0.5)
         Spike.run(move)
     }
     
@@ -76,19 +70,5 @@ class GameScene: SKScene {
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
         
-        // Initialize _lastUpdateTime if it has not already been
-        if (self.lastUpdateTime == 0) {
-            self.lastUpdateTime = currentTime
-        }
-        
-        // Calculate time since last update
-        let dt = currentTime - self.lastUpdateTime
-        
-        // Update entities
-        for entity in self.entities {
-            entity.update(deltaTime: dt)
-        }
-        
-        self.lastUpdateTime = currentTime
     }
 }

@@ -12,12 +12,10 @@ import GameplayKit
 
 class GameViewController: UIViewController {
     
-    var sceneNode : GameScene!
+    var sceneNode = GameScene()
     
     @IBAction func MoveUp(_ sender: UIButton) {
-        for _ in 0...10 {
-            sceneNode.moveLocation(xMove: 0, yMove: 1)
-        }
+        sceneNode.moveLocation(xMove: 0, yMove: 1)
     }
     
     @IBAction func MoveLeft(_ sender: UIButton) {
@@ -36,18 +34,13 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Load 'GameScene.sks' as a GKScene. This provides gameplay related content
-        // including entities and graphs.
+        // Load 'GameScene.sks' as a GKScene. 
         if let scene = GKScene(fileNamed: "GameScene") {
             
             // Get the SKScene from the loaded GKScene
             if let sceneNode = scene.rootNode as! GameScene? {
                 
                 self.sceneNode = sceneNode
-                
-                // Copy gameplay related content over to the scene
-                sceneNode.entities = scene.entities
-                sceneNode.graphs = scene.graphs
                 
                 // Set the scale mode to scale to fit the window
                 sceneNode.scaleMode = .aspectFill
