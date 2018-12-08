@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="O1k-V6-NDg">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,6 +9,59 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Welcome View Controller-->
+        <scene sceneID="9ua-0c-vv5">
+            <objects>
+                <viewController id="kcT-vL-v8u" customClass="WelcomeViewController" customModule="ZagMan" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="z4x-fe-8cK" customClass="Welcom">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to ZagMan!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FOJ-4m-0Us">
+                                <rect key="frame" x="16" y="114" width="343" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fiL-Mn-jqQ">
+                                <rect key="frame" x="16" y="240" width="343" height="30"/>
+                                <state key="normal" title="Start game"/>
+                                <connections>
+                                    <segue destination="BV1-FR-VrT" kind="show" id="Cpt-sl-Kcd"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MVF-vX-Nvi">
+                                <rect key="frame" x="16" y="185" width="343" height="30"/>
+                                <state key="normal" title="Instructions"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vML-Kb-PNd">
+                                <rect key="frame" x="16" y="295" width="343" height="30"/>
+                                <state key="normal" title="High Scores"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="fiL-Mn-jqQ" firstAttribute="leading" secondItem="xNL-oE-Hwp" secondAttribute="leading" constant="16" id="0Ma-T7-Z7r"/>
+                            <constraint firstItem="fiL-Mn-jqQ" firstAttribute="top" secondItem="MVF-vX-Nvi" secondAttribute="bottom" constant="25" id="1rW-Rt-UBB"/>
+                            <constraint firstItem="xNL-oE-Hwp" firstAttribute="trailing" secondItem="fiL-Mn-jqQ" secondAttribute="trailing" constant="16" id="2JX-qh-BAh"/>
+                            <constraint firstItem="MVF-vX-Nvi" firstAttribute="top" secondItem="FOJ-4m-0Us" secondAttribute="bottom" constant="50" id="2br-rp-ZXg"/>
+                            <constraint firstItem="xNL-oE-Hwp" firstAttribute="trailing" secondItem="MVF-vX-Nvi" secondAttribute="trailing" constant="16" id="Ppt-dN-4or"/>
+                            <constraint firstItem="FOJ-4m-0Us" firstAttribute="leading" secondItem="xNL-oE-Hwp" secondAttribute="leading" constant="16" id="RQ8-wY-T7K"/>
+                            <constraint firstItem="FOJ-4m-0Us" firstAttribute="top" secondItem="xNL-oE-Hwp" secondAttribute="top" constant="50" id="VMk-zu-Ceb"/>
+                            <constraint firstItem="vML-Kb-PNd" firstAttribute="leading" secondItem="xNL-oE-Hwp" secondAttribute="leading" constant="16" id="XSg-DV-bGe"/>
+                            <constraint firstItem="MVF-vX-Nvi" firstAttribute="leading" secondItem="xNL-oE-Hwp" secondAttribute="leading" constant="16" id="Zhe-m5-mZP"/>
+                            <constraint firstItem="xNL-oE-Hwp" firstAttribute="trailing" secondItem="FOJ-4m-0Us" secondAttribute="trailing" constant="16" id="h3A-fH-QQy"/>
+                            <constraint firstItem="vML-Kb-PNd" firstAttribute="top" secondItem="fiL-Mn-jqQ" secondAttribute="bottom" constant="25" id="xvA-ts-HTd"/>
+                            <constraint firstItem="xNL-oE-Hwp" firstAttribute="trailing" secondItem="vML-Kb-PNd" secondAttribute="trailing" constant="16" id="zgI-y7-FD0"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="xNL-oE-Hwp"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Uyz-Sy-nTP"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XJV-Z1-93I" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="284" y="102.99850074962519"/>
+        </scene>
         <!--Game View Controller-->
         <scene sceneID="tXr-a1-R10">
             <objects>
@@ -56,7 +109,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="133.59999999999999" y="102.99850074962519"/>
+            <point key="canvasLocation" x="1072.8" y="102.99850074962519"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="nWt-B5-H4p">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="O1k-V6-NDg" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="IEQ-ru-xCw">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="kcT-vL-v8u" kind="relationship" relationship="rootViewController" id="tPT-a8-fF9"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TpS-Ka-yUN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-655.20000000000005" y="102.99850074962519"/>
         </scene>
     </scenes>
 </document>

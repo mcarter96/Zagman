@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F0DAC3921BC64E500166186 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0DAC3821BC64E500166186 /* WelcomeViewController.swift */; };
 		9F56709721ACEF9D002C3F07 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F56709621ACEF9D002C3F07 /* AppDelegate.swift */; };
 		9F56709921ACEF9D002C3F07 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9F56709821ACEF9D002C3F07 /* GameScene.sks */; };
 		9F56709B21ACEF9D002C3F07 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9F56709A21ACEF9D002C3F07 /* Actions.sks */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9F0DAC3821BC64E500166186 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		9F56709321ACEF9D002C3F07 /* ZagMan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZagMan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F56709621ACEF9D002C3F07 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9F56709821ACEF9D002C3F07 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 				9F56709A21ACEF9D002C3F07 /* Actions.sks */,
 				9F56709C21ACEF9D002C3F07 /* GameScene.swift */,
 				9F56709E21ACEF9D002C3F07 /* GameViewController.swift */,
+				9F0DAC3821BC64E500166186 /* WelcomeViewController.swift */,
 				9F5670A021ACEF9D002C3F07 /* Main.storyboard */,
 				9F5670A321ACEF9E002C3F07 /* Assets.xcassets */,
 				9F5670A521ACEF9E002C3F07 /* LaunchScreen.storyboard */,
@@ -151,6 +154,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F56709D21ACEF9D002C3F07 /* GameScene.swift in Sources */,
+				9F0DAC3921BC64E500166186 /* WelcomeViewController.swift in Sources */,
 				9F56709F21ACEF9D002C3F07 /* GameViewController.swift in Sources */,
 				9F56709721ACEF9D002C3F07 /* AppDelegate.swift in Sources */,
 			);
