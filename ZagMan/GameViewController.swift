@@ -15,23 +15,19 @@ class GameViewController: UIViewController {
     var sceneNode = GameScene()
     
     @IBAction func MoveUp(_ sender: UIButton) {
-        sceneNode.Spike.removeAllActions()
-        sceneNode.moveLocation(xMove: 0, yMove: 1)
+        sceneNode.moveLocation(xMove: 0, yMove: 1, sprite: sceneNode.Spike)
     }
     
     @IBAction func MoveLeft(_ sender: UIButton) {
-        sceneNode.Spike.removeAllActions()
-        sceneNode.moveLocation(xMove: -1, yMove: 0)
+        sceneNode.moveLocation(xMove: -1, yMove: 0, sprite: sceneNode.Spike)
     }
     
     @IBAction func MoveDown(_ sender: UIButton) {
-        sceneNode.Spike.removeAllActions()
-        sceneNode.moveLocation(xMove: 0, yMove: -1)
+        sceneNode.moveLocation(xMove: 0, yMove: -1, sprite: sceneNode.Spike)
     }
     
     @IBAction func MoveRight(_ sender: UIButton) {
-        sceneNode.Spike.removeAllActions()
-        sceneNode.moveLocation(xMove: 1, yMove: 0)
+        sceneNode.moveLocation(xMove: 1, yMove: 0, sprite: sceneNode.Spike)
     }
     
     override func viewDidLoad() {

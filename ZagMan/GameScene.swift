@@ -92,10 +92,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    func moveLocation(xMove: CGFloat, yMove: CGFloat) {
+    func moveLocation(xMove: CGFloat, yMove: CGFloat, sprite: SKSpriteNode) {
+        sprite.removeAllActions()
         let move = SKAction.moveBy(x: xMove*60, y: yMove*60, duration: 0.25)
         let moveForever = SKAction.repeatForever(move)
-        Spike.run(moveForever)
+        sprite.run(moveForever)
     }
     
     override func update(_ currentTime: TimeInterval) {
