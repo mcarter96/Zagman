@@ -14,6 +14,7 @@ class GameViewController: UIViewController {
     
     var sceneNode = GameScene()
     
+    
     @IBAction func MoveUp(_ sender: UIButton) {
         sceneNode.Spike.removeAllActions()
         sceneNode.moveLocation(xMove: 0, yMove: 1)
