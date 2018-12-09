@@ -36,9 +36,12 @@ class GameScene: SKScene {
         let column = maze.tileColumnIndex(fromPosition: newPosition)
         let row = maze.tileRowIndex(fromPosition: newPosition) - 2 // For some reason the row count needs to be adjusted by 2
         let tile = maze.tileDefinition(atColumn: column, row: row)
-        if tile == nil && !Spike.hasActions() {
+        if tile == nil {
             let move = SKAction.moveBy(x: xMove*60, y: yMove*60, duration: 0.3) // Chose 60 to match tile size
-            Spike.run(move)
+            Spike.run(move) {
+                // Closure that executes after Spike stops moving
+                self.moveLocation(xMove: xMove, yMove: yMove)
+            }
         } else {
             print("wall!")
         }

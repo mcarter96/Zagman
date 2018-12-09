@@ -15,18 +15,22 @@ class GameViewController: UIViewController {
     var sceneNode = GameScene()
     
     @IBAction func MoveUp(_ sender: UIButton) {
+        sceneNode.Spike.removeAllActions()
         sceneNode.moveLocation(xMove: 0, yMove: 1)
     }
     
     @IBAction func MoveLeft(_ sender: UIButton) {
+        sceneNode.Spike.removeAllActions()
         sceneNode.moveLocation(xMove: -1, yMove: 0)
     }
     
     @IBAction func MoveDown(_ sender: UIButton) {
+        sceneNode.Spike.removeAllActions()
         sceneNode.moveLocation(xMove: 0, yMove: -1)
     }
     
     @IBAction func MoveRight(_ sender: UIButton) {
+        sceneNode.Spike.removeAllActions()
         sceneNode.moveLocation(xMove: 1, yMove: 0)
     }
     
