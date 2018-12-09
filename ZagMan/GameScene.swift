@@ -21,6 +21,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         case spike = 1
         case basketball = 2
         case wall = 4
+        case BYU = 8
     }
     
     // didMove is like viewDidLoad
@@ -41,6 +42,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         BYU.size = CGSize(width: 80, height: 90)
         BYU.position = CGPoint(x: -80, y: 400)
         BYU.physicsBody = SKPhysicsBody(circleOfRadius: BYU.size.height / 2)
+        BYU.physicsBody?.categoryBitMask = NodeCategory.BYU.rawValue
+        BYU.physicsBody?.collisionBitMask = NodeCategory.wall.rawValue
         BYU.physicsBody?.affectedByGravity = false
         addChild(BYU)
         
