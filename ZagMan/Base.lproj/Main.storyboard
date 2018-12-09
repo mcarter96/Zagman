@@ -37,12 +37,18 @@
                                 <state key="normal" title="Instructions">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="instructionsButton:" destination="kcT-vL-v8u" eventType="touchUpInside" id="wxZ-Q7-yHJ"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vML-Kb-PNd">
                                 <rect key="frame" x="16" y="303" width="343" height="30"/>
                                 <state key="normal" title="High Scores">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="highScoresButton:" destination="kcT-vL-v8u" eventType="touchUpInside" id="0iD-ed-sVv"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zgv-VB-uSj">
                                 <rect key="frame" x="67" y="393" width="240" height="128"/>

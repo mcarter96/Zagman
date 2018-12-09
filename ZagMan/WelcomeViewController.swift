@@ -7,8 +7,12 @@
 //
 
 import UIKit
+import CoreData
 
 class WelcomeViewController: UIViewController {
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var scoreArray = [HighScore]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +23,39 @@ class WelcomeViewController: UIViewController {
     }
     
     @IBOutlet weak var image: UIImageView!
+    
+    @IBAction func instructionsButton(_ sender: UIButton) {
+        let instruct = """
+        Move Spike around the maze trying to collect as many basketballs as you can.
+        Be careful though, BYU is trying to get the trophy, if they touch you, the
+        game is over. Good luck!
+        """
+        var alertController = UIAlertController(title: "Instructions", message: instruct, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action) -> Void in
+            print("User just pressed okay")
+        }))
+        present(alertController, animated: true, completion: { () -> Void in
+            print("Just finished showing the alert dialog to the user")
+        })
+    }
+    
+    @IBAction func highScoresButton(_ sender: UIButton) {
+        var scores = ""
+        for x in 0..<scoreArray.count {
+            if x < 10 {
+                scores.append("\n\(scoreArray[x])")
+                print("\(scoreArray[x])")
+            }
+        }
+        var alertController = UIAlertController(title: "High Scores", message: scores, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action) -> Void in
+            print("User just hit okay")
+        }))
+        present(alertController, animated: true, completion: { () -> Void in
+            print("just showd the alert to user")
+        })
+        
+    }
     
     /*
     // MARK: - Navigation
