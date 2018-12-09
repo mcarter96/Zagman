@@ -13,6 +13,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var maze = SKTileMapNode()
     var Spike = SKSpriteNode()
+    var BYU = SKSpriteNode()
     var scoreLabel = SKLabelNode()
     var score = 0
     
@@ -34,6 +35,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         Spike.physicsBody?.categoryBitMask = NodeCategory.spike.rawValue
         Spike.physicsBody?.contactTestBitMask = NodeCategory.basketball.rawValue | NodeCategory.wall.rawValue
         addChild(Spike)
+        
+        BYU = SKSpriteNode(imageNamed: "BYU")
+        BYU.size = CGSize(width: 80, height: 90)
+        BYU.position = CGPoint(x: -80, y: 400)
+        BYU.physicsBody = SKPhysicsBody(circleOfRadius: BYU.size.height / 2)
+        BYU.physicsBody?.affectedByGravity = false
+        addChild(BYU)
         
         scoreLabel = SKLabelNode(text: "Basketballs: 0/8")
         scoreLabel.fontName = "System"
