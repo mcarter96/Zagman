@@ -13,7 +13,7 @@
         <scene sceneID="9ua-0c-vv5">
             <objects>
                 <viewController id="kcT-vL-v8u" customClass="WelcomeViewController" customModule="ZagMan" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="z4x-fe-8cK" customClass="Welcom">
+                    <view key="view" contentMode="scaleToFill" id="z4x-fe-8cK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
