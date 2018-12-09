@@ -33,7 +33,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         Spike.physicsBody = SKPhysicsBody(circleOfRadius: Spike.size.height / 2)
         Spike.physicsBody?.affectedByGravity = false
         Spike.physicsBody?.categoryBitMask = NodeCategory.spike.rawValue
-        Spike.physicsBody?.contactTestBitMask = NodeCategory.basketball.rawValue | NodeCategory.wall.rawValue
+        Spike.physicsBody?.contactTestBitMask = NodeCategory.basketball.rawValue
+        Spike.physicsBody?.collisionBitMask = NodeCategory.wall.rawValue
         addChild(Spike)
         
         BYU = SKSpriteNode(imageNamed: "BYU")
@@ -85,10 +86,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             contact.bodyB.node?.removeFromParent()
             score += 1
             scoreLabel.text = "Basketballs: \(score)/8"
-        } else if contact.bodyA.categoryBitMask == NodeCategory.wall.rawValue {
-            contact.bodyB.node?.removeAllActions() // Stop Spike
-        } else if contact.bodyB.categoryBitMask == NodeCategory.wall.rawValue {
-            contact.bodyA.node?.removeAllActions()
         }
     }
     
