@@ -35,15 +35,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         Spike.physicsBody?.contactTestBitMask = NodeCategory.basketball.rawValue | NodeCategory.wall.rawValue
         addChild(Spike)
         
-        scoreLabel = SKLabelNode(text: "Basketballs: 0")
+        scoreLabel = SKLabelNode(text: "Basketballs: 0/8")
         scoreLabel.fontName = "System"
-        scoreLabel.fontSize = 50
+        scoreLabel.fontSize = 40
         scoreLabel.fontColor = UIColor.white
         scoreLabel.position = CGPoint(x: self.frame.midX, y: self.frame.minY + 50)
         addChild(scoreLabel)
         
         for node in children {
             if node.name == "Wall" {
+                // Add physics bodies to walls
                 let sprite = node as! SKSpriteNode
                 sprite.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: sprite.size.width, height: sprite.size.height))
                 sprite.physicsBody?.affectedByGravity = false
@@ -53,6 +54,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 node.removeFromParent()
                 addChild(sprite)
             } else if node.name == "Ball" {
+                // Add physics bodies to basketballs
                 let sprite = node as! SKSpriteNode
                 sprite.physicsBody = SKPhysicsBody(circleOfRadius: sprite.size.height / 2)
                 sprite.physicsBody?.affectedByGravity = false
@@ -70,11 +72,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if contact.bodyA.categoryBitMask == NodeCategory.basketball.rawValue {
             contact.bodyA.node?.removeFromParent()
             score += 1
-            scoreLabel.text = "Basketballs: \(score)"
+            scoreLabel.text = "Basketballs: \(score)/8"
         } else if contact.bodyB.categoryBitMask == NodeCategory.basketball.rawValue {
             contact.bodyB.node?.removeFromParent()
             score += 1
-            scoreLabel.text = "Basketballs: \(score)"
+            scoreLabel.text = "Basketballs: \(score)/8"
         } else if contact.bodyA.categoryBitMask == NodeCategory.wall.rawValue {
             contact.bodyB.node?.removeAllActions() // Stop Spike
         } else if contact.bodyB.categoryBitMask == NodeCategory.wall.rawValue {
@@ -84,9 +86,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func moveLocation(xMove: CGFloat, yMove: CGFloat) {
         let move = SKAction.moveBy(x: xMove*60, y: yMove*60, duration: 0.25)
-        Spike.run(move) {
-            self.moveLocation(xMove: xMove, yMove: yMove)
-        }
+        let moveForever = SKAction.repeatForever(move)
+        Spike.run(moveForever)
     }
     
     override func update(_ currentTime: TimeInterval) {
