@@ -78,7 +78,7 @@ class GameViewController: UIViewController {
     
     func gameOver() {
         var alertTextField = UITextField()
-        var alertController = UIAlertController(title: "Game Over", message: nil, preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Game Over", message: nil, preferredStyle: .alert)
         alertController.addTextField(configurationHandler: { (textField) in
             textField.placeholder = "Enter Name"
             alertTextField = textField

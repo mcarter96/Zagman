@@ -40,7 +40,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         Spike.physicsBody = SKPhysicsBody(circleOfRadius: Spike.size.height / 2)
         Spike.physicsBody?.affectedByGravity = false
         Spike.physicsBody?.categoryBitMask = NodeCategory.spike.rawValue
-        Spike.physicsBody?.contactTestBitMask = NodeCategory.basketball.rawValue
+        Spike.physicsBody?.contactTestBitMask = NodeCategory.basketball.rawValue | NodeCategory.BYU.rawValue | NodeCategory.UNC.rawValue
         Spike.physicsBody?.collisionBitMask = NodeCategory.wall.rawValue
         addChild(Spike)
         
@@ -49,7 +49,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         BYU.position = CGPoint(x: -240, y: 240)
         BYU.physicsBody = SKPhysicsBody(circleOfRadius: BYU.size.height / 2)
         BYU.physicsBody?.categoryBitMask = NodeCategory.BYU.rawValue
-        BYU.physicsBody?.contactTestBitMask = NodeCategory.wall.rawValue
+        BYU.physicsBody?.contactTestBitMask = NodeCategory.wall.rawValue | NodeCategory.spike.rawValue
         BYU.physicsBody?.collisionBitMask = 0
         BYU.physicsBody?.affectedByGravity = false
         addChild(BYU)
@@ -59,14 +59,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         UNC.position = CGPoint(x: 240, y: 320)
         UNC.physicsBody = SKPhysicsBody(circleOfRadius: UNC.size.height / 2)
         UNC.physicsBody?.categoryBitMask = NodeCategory.UNC.rawValue
-        UNC.physicsBody?.contactTestBitMask = NodeCategory.wall.rawValue
+        UNC.physicsBody?.contactTestBitMask = NodeCategory.wall.rawValue | NodeCategory.spike.rawValue
         UNC.physicsBody?.collisionBitMask = 0
         UNC.physicsBody?.affectedByGravity = false
         addChild(UNC)
         
-        let moveUp = SKAction.repeatForever(SKAction.moveBy(x: 0, y: 60, duration: 0.5))
+        let moveUp = SKAction.repeatForever(SKAction.moveBy(x: 0, y: 60, duration: 0.3))
         mascotActions.append(moveUp)
-        let moveDown = SKAction.repeatForever(SKAction.moveBy(x: 0, y: -60, duration: 0.5))
+        let moveDown = SKAction.repeatForever(SKAction.moveBy(x: 0, y: -60, duration: 0.3))
         mascotActions.append(moveDown)
         
         scoreLabel = SKLabelNode(text: "Basketballs: 0/8")
@@ -103,17 +103,31 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     }
     
-    func addBYUCougar(x: CGFloat, y: CGFloat) {
-        
-    }
-    
     func didBegin(_ contact: SKPhysicsContact) {
-        if contact.bodyA.categoryBitMask == NodeCategory.BYU.rawValue || contact.bodyB.categoryBitMask == NodeCategory.BYU.rawValue {
-            print("contact")
-            BYU.removeAllActions()
-        } else if contact.bodyA.categoryBitMask == NodeCategory.UNC.rawValue || contact.bodyB.categoryBitMask == NodeCategory.UNC.rawValue {
-            print("contact")
-            UNC.removeAllActions()
+        if contact.bodyA.categoryBitMask == NodeCategory.BYU.rawValue {
+            if contact.bodyB.categoryBitMask == NodeCategory.spike.rawValue {
+                print("Game over")
+            } else {
+                BYU.removeAllActions()
+            }
+        } else if contact.bodyB.categoryBitMask == NodeCategory.BYU.rawValue {
+            if contact.bodyA.categoryBitMask == NodeCategory.spike.rawValue {
+                print("Game over")
+            } else {
+                BYU.removeAllActions()
+            }
+        } else if contact.bodyA.categoryBitMask == NodeCategory.UNC.rawValue {
+            if contact.bodyB.categoryBitMask == NodeCategory.spike.rawValue {
+                print("Game over")
+            } else {
+                UNC.removeAllActions()
+            }
+        } else if contact.bodyB.categoryBitMask == NodeCategory.UNC.rawValue {
+            if contact.bodyA.categoryBitMask == NodeCategory.spike.rawValue {
+                print("Game over")
+            } else {
+                UNC.removeAllActions()
+            }
         } else if contact.bodyA.categoryBitMask == NodeCategory.basketball.rawValue {
             contact.bodyA.node?.removeFromParent()
             score += 1

@@ -27,10 +27,10 @@ class WelcomeViewController: UIViewController {
     @IBAction func instructionsButton(_ sender: UIButton) {
         let instruct = """
         Move Spike around the maze trying to collect as many basketballs as you can.
-        Be careful though, BYU is trying to get the trophy, if they touch you, the
+        Be careful though, other teams are out to get you. If they touch you, the
         game is over. Good luck!
         """
-        var alertController = UIAlertController(title: "Instructions", message: instruct, preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Instructions", message: instruct, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action) -> Void in
             print("User just pressed okay")
         }))
@@ -47,7 +47,7 @@ class WelcomeViewController: UIViewController {
                 print("\(scoreArray[x])")
             }
         }
-        var alertController = UIAlertController(title: "High Scores", message: scores, preferredStyle: .alert)
+        let alertController = UIAlertController(title: "High Scores", message: scores, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action) -> Void in
             print("User just hit okay")
         }))
