@@ -16,7 +16,6 @@ class GameScene: SKScene {
     
     // didMove is like viewDidLoad
     override func didMove(to view: SKView) {
-        backgroundColor = SKColor.lightGray
         
         // Load maze from GameScene.sks
         maze = self.childNode(withName: "maze") as! SKTileMapNode

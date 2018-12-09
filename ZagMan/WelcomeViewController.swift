@@ -14,9 +14,12 @@ class WelcomeViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        image.image = UIImage(named: "Spike")
     }
     
-
+    @IBOutlet weak var image: UIImageView!
+    
     /*
     // MARK: - Navigation
 
