@@ -11,6 +11,7 @@ import GameplayKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
+    var viewController: UIViewController!
     var maze = SKTileMapNode()
     var Spike = SKSpriteNode()
     var BYU = SKSpriteNode()
@@ -121,6 +122,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             contact.bodyB.node?.removeFromParent()
             score += 1
             scoreLabel.text = "Basketballs: \(score)/8"
+        } else if score == 8 {
+            //self.viewController.gameOver()
         }
     }
     
@@ -149,5 +152,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 UNC.run(action)
             }
         }
+    }
+    
+    func gameOver() {
+        print(score)
     }
 }
