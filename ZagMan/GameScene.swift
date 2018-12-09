@@ -25,7 +25,31 @@ class GameScene: SKScene {
         Spike.position = CGPoint(x: 30, y: 110)
         addChild(Spike)
         self.Spike = Spike
+        
+        addBasketballs()
 
+    }
+    
+    func addBasketballs() {
+        var y = 470
+        while y > -300 {
+            var x = -270
+            while x < 280 {
+                let position = CGPoint(x: x, y: y)
+                let column = maze.tileColumnIndex(fromPosition: position)
+                let row = maze.tileRowIndex(fromPosition: position) - 2
+                let tile = maze.tileDefinition(atColumn: column, row: row)
+                if tile == nil {
+                    let ball = SKSpriteNode(imageNamed: "basketball")
+                    ball.size = CGSize(width: 30, height: 30)
+                    ball.position = position
+                    addChild(ball)
+                }
+                x += 180
+            }
+            y -= 120
+        }
+        
     }
     
     func moveLocation(xMove: CGFloat, yMove: CGFloat) {
