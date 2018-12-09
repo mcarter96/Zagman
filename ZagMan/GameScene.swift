@@ -21,7 +21,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         case basketball = 2
     }
     
-    
     // didMove is like viewDidLoad
     override func didMove(to view: SKView) {
         self.physicsWorld.contactDelegate = self
@@ -90,7 +89,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
             y -= 120
         }
-        
     }
     
     func moveLocation(xMove: CGFloat, yMove: CGFloat) {
@@ -106,7 +104,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 // Closure that executes after Spike stops moving
                 self.moveLocation(xMove: xMove, yMove: yMove)
             }
-        } 
+        }
     }
     
     override func update(_ currentTime: TimeInterval) {
