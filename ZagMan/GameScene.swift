@@ -23,6 +23,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var mascotActions = [SKAction]()
     var currentBYUActionIndex = 0
     var currentUNCActionIndex = 0
+    var balls = [SKSpriteNode]()
+    var walls = [SKSpriteNode]()
     
     enum NodeCategory: UInt32 {
         case spike = 1
@@ -32,9 +34,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         case UNC = 16
     }
     
-    // didMove is like viewDidLoad
-    override func didMove(to view: SKView) {
-        
+    func loadSprites() {
         self.physicsWorld.contactDelegate = self
         
         Spike = SKSpriteNode(imageNamed: "Spike")
@@ -67,17 +67,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         UNC.physicsBody?.affectedByGravity = false
         addChild(UNC)
         
-        let moveUp = SKAction.repeatForever(SKAction.moveBy(x: 0, y: 60, duration: 0.3))
-        mascotActions.append(moveUp)
-        let moveDown = SKAction.repeatForever(SKAction.moveBy(x: 0, y: -60, duration: 0.3))
-        mascotActions.append(moveDown)
-        
         scoreLabel = SKLabelNode(text: "Basketballs: 0/8")
         scoreLabel.fontName = "System"
         scoreLabel.fontSize = 40
         scoreLabel.fontColor = UIColor.white
         scoreLabel.position = CGPoint(x: self.frame.midX, y: self.frame.minY + 50)
         addChild(scoreLabel)
+    }
+    
+    
+    // didMove is like viewDidLoad
+    override func didMove(to view: SKView) {
+        
+        loadSprites()
+        let moveUp = SKAction.repeatForever(SKAction.moveBy(x: 0, y: 60, duration: 0.3))
+        mascotActions.append(moveUp)
+        let moveDown = SKAction.repeatForever(SKAction.moveBy(x: 0, y: -60, duration: 0.3))
+        mascotActions.append(moveDown)
         
         for node in children {
             if node.name == "Wall" {
@@ -91,6 +97,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 sprite.physicsBody?.usesPreciseCollisionDetection = true
                 node.removeFromParent()
                 addChild(sprite)
+                walls.append(sprite)
             } else if node.name == "Ball" {
                 // Add physics bodies to basketballs
                 let sprite = node as! SKSpriteNode
@@ -101,6 +108,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 sprite.physicsBody?.collisionBitMask = 0
                 node.removeFromParent()
                 addChild(sprite)
+                balls.append(sprite)
             }
         }
 
@@ -149,8 +157,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func gameOver() {
         isPaused = true
+        var title = "Game Over"
+        if score == 8 {
+            title = "You won!"
+        }
         var alertTextField = UITextField()
-        let alertController = UIAlertController(title: "Game Over", message: nil, preferredStyle: .alert)
+        let alertController = UIAlertController(title: title, message: nil, preferredStyle: .alert)
         alertController.addTextField(configurationHandler: { (textField) in
             textField.placeholder = "Enter Name"
             alertTextField = textField
@@ -164,6 +176,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 self.saveHighScores()
             }
             // Reset game scene
+            // remove basketballs, spike, byu, unc and update score
+            self.removeAllChildren()
+            self.score = 0
+            var x = 0
+            var y = 0
+            while (!self.balls.isEmpty && x < self.balls.count) {
+                self.addChild(self.balls[x])
+                x += 1
+            }
+            while (!self.walls.isEmpty && y < self.walls.count) {
+                self.addChild(self.walls[y])
+                y += 1
+            }
+            self.loadSprites()
+            self.isPaused = false
+            
             
         }))
         alertController.addAction(UIAlertAction(title: "Exit", style: .default, handler: { (action) -> Void in
