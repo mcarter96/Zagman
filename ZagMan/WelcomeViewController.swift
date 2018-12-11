@@ -41,10 +41,12 @@ class WelcomeViewController: UIViewController {
     }
     
     @IBAction func highScoresButton(_ sender: UIButton) {
+        loadHighScores()
+        
         var scores = ""
         for x in 0..<scoreArray.count {
             if x < 5 {
-                scores.append("\(x+1). \(scoreArray[x].name): \(scoreArray[x].score) \n")
+                scores.append("\(x+1). \(scoreArray[x].name): \(scoreArray[x].score) 🏀 \n")
             }
         }
         if scores.count == 0 {
@@ -58,7 +60,7 @@ class WelcomeViewController: UIViewController {
     
     func loadHighScores() {
         let request: NSFetchRequest<HighScore> = HighScore.fetchRequest()
-        let sortDescripter = NSSortDescriptor(key: "score", ascending: true, selector: #selector(NSString.caseInsensitiveCompare))
+        let sortDescripter = NSSortDescriptor(key: "score", ascending: false, selector: #selector(NSString.caseInsensitiveCompare))
         request.sortDescriptors = [sortDescripter]
         do {
             scoreArray = try context.fetch(request)
