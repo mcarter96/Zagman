@@ -203,13 +203,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 self.saveHighScores()
             }
             // Return to Welcome View Controller
-            
+            let navigationController = self.view?.window?.rootViewController as! UINavigationController
+            navigationController.popViewController(animated: true)
         }))
         // Reference: https://stackoverflow.com/questions/34367268/displaying-a-uialertcontroller-in-gamescene-spritekit-swift
-        self.view?.window?.rootViewController?.present(alertController, animated: true, completion: { () -> Void in
-            print("just showed the alert to user")
-            
-        })
+        self.view?.window?.rootViewController?.present(alertController, animated: true)
     }
     
     func saveHighScores() {
