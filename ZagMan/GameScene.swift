@@ -155,12 +155,27 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             textField.placeholder = "Enter Name"
             alertTextField = textField
         })
-        alertController.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action) -> Void in
+        alertController.addAction(UIAlertAction(title: "Play Again", style: .default, handler: { (action) -> Void in
             let text = alertTextField.text!
-            let newHighScore = HighScore(context: self.context)
-            newHighScore.name = text
-            newHighScore.score = Int32(self.score)
-            self.saveHighScores()
+            if text != "" {
+                let newHighScore = HighScore(context: self.context)
+                newHighScore.name = text
+                newHighScore.score = Int32(self.score)
+                self.saveHighScores()
+            }
+            // Reset game scene
+            
+        }))
+        alertController.addAction(UIAlertAction(title: "Exit", style: .default, handler: { (action) -> Void in
+            let text = alertTextField.text!
+            if text != "" {
+                let newHighScore = HighScore(context: self.context)
+                newHighScore.name = text
+                newHighScore.score = Int32(self.score)
+                self.saveHighScores()
+            }
+            // Return to Welcome View Controller
+            
         }))
         // Reference: https://stackoverflow.com/questions/34367268/displaying-a-uialertcontroller-in-gamescene-spritekit-swift
         self.view?.window?.rootViewController?.present(alertController, animated: true, completion: { () -> Void in
