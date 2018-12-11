@@ -20,51 +20,51 @@ class WelcomeViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         image.image = UIImage(named: "Spike")
+        
+        let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        print(documentsDirectory)
+        
+        loadHighScores()
     }
     
     @IBOutlet weak var image: UIImageView!
     
     @IBAction func instructionsButton(_ sender: UIButton) {
         let instruct = """
-        Move Spike around the maze trying to collect as many basketballs as you can.
+        Move Spike around the maze trying to collect as many basketballs as you can. 🏀🏀🏀
         Be careful though, other teams are out to get you. If they touch you, the
         game is over. Good luck!
         """
         let alertController = UIAlertController(title: "Instructions", message: instruct, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action) -> Void in
-            print("User just pressed okay")
-        }))
-        present(alertController, animated: true, completion: { () -> Void in
-            print("Just finished showing the alert dialog to the user")
-        })
+        alertController.addAction(UIAlertAction(title: "Okay", style: .default))
+        present(alertController, animated: true)
     }
     
     @IBAction func highScoresButton(_ sender: UIButton) {
         var scores = ""
         for x in 0..<scoreArray.count {
-            if x < 10 {
-                scores.append("\n\(scoreArray[x])")
-                print("\(scoreArray[x])")
+            if x < 5 {
+                scores.append("\(x+1). \(scoreArray[x].name): \(scoreArray[x].score) \n")
             }
         }
+        if scores.count == 0 {
+            scores = "None"
+        }
         let alertController = UIAlertController(title: "High Scores", message: scores, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action) -> Void in
-            print("User just hit okay")
-        }))
-        present(alertController, animated: true, completion: { () -> Void in
-            print("just showd the alert to user")
-        })
+        alertController.addAction(UIAlertAction(title: "Okay", style: .default))
+        present(alertController, animated: true)
         
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func loadHighScores() {
+        let request: NSFetchRequest<HighScore> = HighScore.fetchRequest()
+        let sortDescripter = NSSortDescriptor(key: "score", ascending: true, selector: #selector(NSString.caseInsensitiveCompare))
+        request.sortDescriptors = [sortDescripter]
+        do {
+            scoreArray = try context.fetch(request)
+        } catch {
+            print("Error loading items \(error)")
+        }
     }
-    */
-
+    
 }

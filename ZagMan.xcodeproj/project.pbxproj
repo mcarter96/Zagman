@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		6152A7C721BD9DA900822114 /* Zagman.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6152A7C521BD9DA800822114 /* Zagman.xcdatamodeld */; };
 		9F0DAC3921BC64E500166186 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0DAC3821BC64E500166186 /* WelcomeViewController.swift */; };
+		9F1B438321BF493500F6E977 /* HighScore+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1B438121BF493500F6E977 /* HighScore+CoreDataClass.swift */; };
+		9F1B438421BF493500F6E977 /* HighScore+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1B438221BF493500F6E977 /* HighScore+CoreDataProperties.swift */; };
 		9F56709721ACEF9D002C3F07 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F56709621ACEF9D002C3F07 /* AppDelegate.swift */; };
 		9F56709921ACEF9D002C3F07 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9F56709821ACEF9D002C3F07 /* GameScene.sks */; };
 		9F56709B21ACEF9D002C3F07 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9F56709A21ACEF9D002C3F07 /* Actions.sks */; };
@@ -23,6 +25,8 @@
 /* Begin PBXFileReference section */
 		6152A7C621BD9DA800822114 /* Zagman.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Zagman.xcdatamodel; sourceTree = "<group>"; };
 		9F0DAC3821BC64E500166186 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		9F1B438121BF493500F6E977 /* HighScore+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HighScore+CoreDataClass.swift"; sourceTree = "<group>"; };
+		9F1B438221BF493500F6E977 /* HighScore+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HighScore+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9F56709321ACEF9D002C3F07 /* ZagMan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZagMan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F56709621ACEF9D002C3F07 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9F56709821ACEF9D002C3F07 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -66,6 +70,8 @@
 		9F56709521ACEF9D002C3F07 /* ZagMan */ = {
 			isa = PBXGroup;
 			children = (
+				9F1B438121BF493500F6E977 /* HighScore+CoreDataClass.swift */,
+				9F1B438221BF493500F6E977 /* HighScore+CoreDataProperties.swift */,
 				9F56709621ACEF9D002C3F07 /* AppDelegate.swift */,
 				9F56709821ACEF9D002C3F07 /* GameScene.sks */,
 				9F5670AE21ACEFCB002C3F07 /* MyTileSet.sks */,
@@ -156,6 +162,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F1B438421BF493500F6E977 /* HighScore+CoreDataProperties.swift in Sources */,
+				9F1B438321BF493500F6E977 /* HighScore+CoreDataClass.swift in Sources */,
 				9F56709D21ACEF9D002C3F07 /* GameScene.swift in Sources */,
 				6152A7C721BD9DA900822114 /* Zagman.xcdatamodeld in Sources */,
 				9F0DAC3921BC64E500166186 /* WelcomeViewController.swift in Sources */,

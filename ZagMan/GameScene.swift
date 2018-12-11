@@ -8,10 +8,12 @@
 
 import SpriteKit
 import GameplayKit
+import UIKit
+import CoreData
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
-    var viewController: UIViewController!
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var maze = SKTileMapNode()
     var Spike = SKSpriteNode()
     var BYU = SKSpriteNode()
@@ -32,6 +34,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // didMove is like viewDidLoad
     override func didMove(to view: SKView) {
+        
         self.physicsWorld.contactDelegate = self
         
         Spike = SKSpriteNode(imageNamed: "Spike")
@@ -55,8 +58,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(BYU)
         
         UNC = SKSpriteNode(imageNamed: "UNC")
-        UNC.size = CGSize(width: 90, height: 70)
-        UNC.position = CGPoint(x: 240, y: 320)
+        UNC.size = CGSize(width: 90, height: 80)
+        UNC.position = CGPoint(x: 240, y: 80)
         UNC.physicsBody = SKPhysicsBody(circleOfRadius: UNC.size.height / 2)
         UNC.physicsBody?.categoryBitMask = NodeCategory.UNC.rawValue
         UNC.physicsBody?.contactTestBitMask = NodeCategory.wall.rawValue | NodeCategory.spike.rawValue
@@ -106,25 +109,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func didBegin(_ contact: SKPhysicsContact) {
         if contact.bodyA.categoryBitMask == NodeCategory.BYU.rawValue {
             if contact.bodyB.categoryBitMask == NodeCategory.spike.rawValue {
-                print("Game over")
+                gameOver()
             } else {
+                // Contact with a wall
                 BYU.removeAllActions()
             }
         } else if contact.bodyB.categoryBitMask == NodeCategory.BYU.rawValue {
             if contact.bodyA.categoryBitMask == NodeCategory.spike.rawValue {
-                print("Game over")
+                gameOver()
             } else {
                 BYU.removeAllActions()
             }
         } else if contact.bodyA.categoryBitMask == NodeCategory.UNC.rawValue {
             if contact.bodyB.categoryBitMask == NodeCategory.spike.rawValue {
-                print("Game over")
+                gameOver()
             } else {
                 UNC.removeAllActions()
             }
         } else if contact.bodyB.categoryBitMask == NodeCategory.UNC.rawValue {
             if contact.bodyA.categoryBitMask == NodeCategory.spike.rawValue {
-                print("Game over")
+                gameOver()
             } else {
                 UNC.removeAllActions()
             }
@@ -136,8 +140,41 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             contact.bodyB.node?.removeFromParent()
             score += 1
             scoreLabel.text = "Basketballs: \(score)/8"
-        } else if score == 8 {
-            //self.viewController.gameOver()
+        }
+        
+        if score == 8 {
+            gameOver()
+        }
+    }
+    
+    func gameOver() {
+        isPaused = true
+        var alertTextField = UITextField()
+        let alertController = UIAlertController(title: "Game Over", message: nil, preferredStyle: .alert)
+        alertController.addTextField(configurationHandler: { (textField) in
+            textField.placeholder = "Enter Name"
+            alertTextField = textField
+        })
+        alertController.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action) -> Void in
+            let text = alertTextField.text!
+            let newHighScore = HighScore(context: self.context)
+            newHighScore.name = text
+            newHighScore.score = Int32(self.score)
+            self.saveHighScores()
+        }))
+        // Reference: https://stackoverflow.com/questions/34367268/displaying-a-uialertcontroller-in-gamescene-spritekit-swift
+        self.view?.window?.rootViewController?.present(alertController, animated: true, completion: { () -> Void in
+            print("just showed the alert to user")
+            
+        })
+    }
+    
+    func saveHighScores() {
+        do {
+            try context.save()
+        }
+        catch {
+            print("Error saving items \(error)")
         }
     }
     
@@ -166,9 +203,5 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 UNC.run(action)
             }
         }
-    }
-    
-    func gameOver() {
-        print(score)
     }
 }

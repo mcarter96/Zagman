@@ -57,7 +57,6 @@ class GameViewController: UIViewController {
                 }
             }
         }
-        sceneNode.viewController = self
     }
 
     override var shouldAutorotate: Bool {
@@ -74,52 +73,6 @@ class GameViewController: UIViewController {
 
     override var prefersStatusBarHidden: Bool {
         return true
-    }
-    
-    func gameOver() {
-        var alertTextField = UITextField()
-        let alertController = UIAlertController(title: "Game Over", message: nil, preferredStyle: .alert)
-        alertController.addTextField(configurationHandler: { (textField) in
-            textField.placeholder = "Enter Name"
-            alertTextField = textField
-        })
-        alertController.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action) -> Void in
-            let text = alertTextField.text!
-            let newHighScore = HighScore(context: self.context)
-            newHighScore.name = text
-            newHighScore.score = Int32(self.sceneNode.score)
-            // MARK: lab #8.c.
-            self.scoreArray.append(newHighScore)
-            self.saveHighScores()
-        }))
-        present(alertController, animated: true, completion: { () -> Void in
-            print("just showd the alert to user")
-            
-        })
-    }
-    
-    func saveHighScores() {
-        
-        do {
-            try context.save()
-        }
-        catch {
-            print("Error saving items \(error)")
-        }
-    }
-    
-    // MARK: lab #6
-    func loadHighScores(withPredicate predicate: NSPredicate? = nil) {
-        let request: NSFetchRequest<HighScore> = HighScore.fetchRequest()
-        // MARK: lab #14
-        let sortDescripter = NSSortDescriptor(key: "score", ascending: true, selector: #selector(NSString.caseInsensitiveCompare))
-        request.sortDescriptors = [sortDescripter]
-        
-        do {
-            scoreArray = try context.fetch(request)
-        } catch {
-            print("Error loading items \(error)")
-        }
     }
     
 }
